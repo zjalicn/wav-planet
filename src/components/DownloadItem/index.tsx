@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const DownloadItem = ({ product }: IProps) => {
-  const { name } = product;
+  const { name, imageSrc } = product;
   return (
     <Flex
       w="full"
@@ -23,7 +23,7 @@ const DownloadItem = ({ product }: IProps) => {
     >
       <Flex align="center" w="full">
         <AspectRatio ratio={3 / 4} w="full" maxW={20}>
-          <Image src="https://bit.ly/naruto-sage" alt="Product" />
+          <Image src={require(`../../images/${imageSrc}.jpg`)} alt="Product" />
         </AspectRatio>
         <Text fontSize="3xl" fontWeight="bold" px={4}>
           {name}

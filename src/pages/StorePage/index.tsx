@@ -13,7 +13,7 @@ interface IProps {
 const StorePage = ({ products }: IProps): ReactElement => {
   const [activeCategory, setActiveCategory] = useState<CategoryTypes>("All");
   return (
-    <Flex w="full" h="100vh">
+    <Flex w="full" h="100vh" flexDir={{ base: "column", sm: "row" }}>
       <Sidebar category={activeCategory} setCategory={setActiveCategory} />
       <ProductView products={products} activeCategory={activeCategory} />
     </Flex>

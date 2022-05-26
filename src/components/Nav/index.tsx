@@ -41,15 +41,16 @@ const Nav = (): ReactElement => {
       pos="sticky"
       top={0}
       w="100%"
+      h="8vh"
       p={3}
       bg={useColorModeValue("gray.100", "gray.900")}
       verticalAlign={"center"}
       zIndex={20}
       boxShadow="md"
     >
-      <Flex alignItems={"center"} justifyContent={"space-between"}>
+      <Flex alignItems={"center"} justifyContent={"space-between"} h="100%">
         <Link as={RouterLink} to="/store">
-          <AspectRatio w={10} ratio={1}>
+          <AspectRatio w={12} ratio={1}>
             <Image src={useColorModeValue(Logo, LogoInverted)} alt="Logo" />
           </AspectRatio>
         </Link>

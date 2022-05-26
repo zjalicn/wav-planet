@@ -23,8 +23,9 @@ const ProductView = ({ products, activeCategory }: IProps) => {
       justifyContent={{ base: "space-evenly" }}
       w="full"
       p={2}
-      h="min-content"
+      h="92vh"
       overflow="hidden"
+      overflowY="scroll"
     >
       {products.map(
         (p) =>

@@ -18,11 +18,13 @@ const Sidebar = ({ category, setCategory }: IProps) => {
 
   return (
     <Flex
-      w="30vw"
+      w={{ base: "100vw", sm: "30vw" }}
       flexDir="column"
       alignContent="center"
       justifyContent="center"
-      p={6}
+      textAlign={{ base: "center", sm: "left" }}
+      px={6}
+      pt={{ base: 6, sm: 0 }}
     >
       {categories.map((c) => (
         <Text
