@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-wavplanetstore-dev-151344-authRole",
+      "UnauthRoleArn": "arn:aws:iam::407618291759:role/amplify-wavplanetstore-dev-151344-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::407618291759:role/amplify-wavplanetstore-dev-151344-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-wavplanetstore-dev-151344-deployment",
+      "UnauthRoleName": "amplify-wavplanetstore-dev-151344-unauthRole",
+      "StackName": "amplify-wavplanetstore-dev-151344",
+      "StackId": "arn:aws:cloudformation:us-east-1:407618291759:stack/amplify-wavplanetstore-dev-151344/f73c25e0-dd27-11ec-9264-0ab669f322c5",
+      "AmplifyAppId": "d3i6e2cfxei3mh"
+    }
+  }
+}
