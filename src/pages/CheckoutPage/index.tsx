@@ -9,20 +9,11 @@ interface IProps {
 }
 
 const CheckoutPage = ({ products }: IProps): ReactElement => {
-  const secondaryTextColor = useColorModeValue("gray.600", "gray.400");
-
   return (
     <Container maxW="container.xl" p={0}>
-      <Flex
-        h={{ base: "auto", md: "100vh" }}
-        py={[0, 10, 20]}
-        direction={{ base: "column-reverse", md: "row" }}
-      >
-        <CheckoutDetails secondaryTextColor={secondaryTextColor} />
-        <CheckoutCart
-          products={products}
-          secondaryTextColor={secondaryTextColor}
-        />
+      <Flex py={[0, 5, 10]} direction={{ base: "column-reverse", md: "row" }}>
+        <CheckoutDetails />
+        <CheckoutCart products={products} />
       </Flex>
     </Container>
   );

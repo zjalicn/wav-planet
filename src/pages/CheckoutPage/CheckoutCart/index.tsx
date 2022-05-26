@@ -11,14 +11,10 @@ import { CartItem } from "../../../components";
 import { IProduct } from "../../../interfaces";
 
 interface IProps {
-  secondaryTextColor: string;
   products: IProduct[];
 }
 
-const CheckoutCart = ({
-  secondaryTextColor,
-  products,
-}: IProps): ReactElement => {
+const CheckoutCart = ({ products }: IProps): ReactElement => {
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.50");
 
   const calculateSubtotal = (cart: IProduct[]) => {
@@ -52,24 +48,24 @@ const CheckoutCart = ({
         <Heading size="2xl">Your Cart</Heading>
       </VStack>
       {products.map((p) => (
-        <CartItem product={p} textColor={secondaryTextColor} />
+        <CartItem product={p} />
       ))}
       <VStack spacing={4} alignItems="stretch" w="full">
         <HStack justifyContent="space-between">
-          <Text color={secondaryTextColor}>Subtotal</Text>
+          <Text>Subtotal</Text>
           <Heading size="sm">${calculateSubtotal(products).toFixed()}</Heading>
         </HStack>
         <HStack justifyContent="space-between">
-          <Text color={secondaryTextColor}>Shipping</Text>
+          <Text>Shipping</Text>
           <Heading size="sm">${calculateShipping(products).toFixed()}</Heading>
         </HStack>
         <HStack justifyContent="space-between">
-          <Text color={secondaryTextColor}>Taxes (estimated)</Text>
+          <Text>Taxes (estimated)</Text>
           <Heading size="sm">${calculateTaxes(products).toFixed()}</Heading>
         </HStack>
         <Divider />
         <HStack justifyContent="space-between">
-          <Text color={secondaryTextColor}>Total</Text>
+          <Text>Total</Text>
           <Heading size="lg">${calculateTotal().toFixed()}</Heading>
         </HStack>
       </VStack>

@@ -1,30 +1,32 @@
 # Wav Planet Store
 -- 
 ## Roadmap
-### 1.0 - Public Routing + Finalize Pages
-- ReactRouter
+
+### 2.0 - Log In State + Protected Routes
 - StoreFront
     - fixed height sidebar
     - responsive sidebar for StorePage
 - HomePage
-    - no nav
-    - video background
-    - big logo in center
-- switch chakra ui icons to react fa
-    - https://chakra-ui.com/docs/components/media-and-icons/icon
+    - REACT THREE FIBER - https://codepen.io/round/pen/NBoebM
+- Sign Up / Log in
+    - onchange events for login/sign up form, clear on error
+    - persist on refresh
+    - recover password
+    - unauthorized for login?
+    - Formik : https://formik.org/
+    - handle logout
+        - if used in more components, this should be in context 
+        - axios to /logout endpoint 
+- Product Page
+    - slightly smaller pic
+    - send add to cart to the bottom, space between title, desc and cart button?
+    - line up title and top of pic
 
-### 2.0 - Log In State + Protected Routes
-- Protected Routes
+
+### 3.0 - Connect to API
 - LoginSignUpPage
     - allow for user sign up w/ encrypted password
     - log in user and create token
-- Navbar
-    - if logged in, show user avatar + dropdown
-    - if logged out, show sign up button
-    - cart dropdown leads to checkout
-    - remove NavLink?
-
-### 3.0 - Connect to API
 - Host API to public VPC on AWS & Connect
 - User Login to DB
 - PLP
@@ -55,8 +57,16 @@
 - clean up unneeded libraries
 - Better custom styling, using { mode } from  theme-tools
     - https://chakra-ui.com/docs/styled-system/theming/customize-theme
-- logo
-    - https://www.dafont.com/planet-kosmos.font?text=wav+planet&psize=l
 - interfaces
-    - make models folder / sync with backend?
+    - make models folder / sync with backend? maybe a core library/dependancy
 - tests
+
+### EVENTUALLY
+Typescript Cleanup
+    - RequireAuth props any
+    - AuthProvider any useState
+
+- Navbar
+    - cart dropdown leads to checkout
+
+- Remove blue border when element is clicked

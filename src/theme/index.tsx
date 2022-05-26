@@ -5,7 +5,12 @@ import {
   withDefaultVariant,
 } from "@chakra-ui/react";
 
-import { buttonStyles, inputSelectStyles, checkboxStyles } from "./styles";
+import {
+  buttonStyles,
+  inputSelectStyles,
+  checkboxStyles,
+  linkStyles,
+} from "./styles";
 
 const theme = extendTheme(
   {

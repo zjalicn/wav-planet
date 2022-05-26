@@ -45,3 +45,13 @@ export const checkboxStyles = {
     },
   },
 };
+
+export const linkStyles = {
+  baseStyle: {
+    control: {
+      _focus: {
+        boxShadow: "none",
+      },
+    },
+  },
+};

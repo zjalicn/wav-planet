@@ -10,7 +10,7 @@ const Sidebar = ({ category, setCategory }: IProps) => {
     "All",
     "Bundles",
     "Drum Kits",
-    "Loop Kits",
+    "Melody Kits",
     "MIDI Kits",
     "Preset Kits",
     "Vocal Kits",
@@ -22,12 +22,13 @@ const Sidebar = ({ category, setCategory }: IProps) => {
       flexDir="column"
       alignContent="center"
       justifyContent="center"
-      p={3}
+      p={6}
     >
       {categories.map((c) => (
         <Text
           onClick={() => setCategory(c)}
           fontWeight={c === category ? "bold" : "normal"}
+          cursor="pointer"
         >
           {c}
         </Text>

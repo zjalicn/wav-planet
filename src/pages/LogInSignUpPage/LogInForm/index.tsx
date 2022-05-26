@@ -1,55 +1,67 @@
 import { ReactElement, useState } from "react";
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  Checkbox,
-  Stack,
-  Button,
-  InputGroup,
-  InputRightElement,
-} from "@chakra-ui/react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FormControl, FormLabel, Input, Stack, Button } from "@chakra-ui/react";
 
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import useAuth from "../../../hooks/useAuth";
 
 const LogInForm = (): ReactElement => {
-  const [showPassword, setShowPassword] = useState(false);
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  const location: any = useLocation();
+  const from = location.state?.from?.pathname || "/store";
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      // try to login via axios, if successful get accesstoken and roles form response.data
+      // encrypt password
+      const accessToken = "accessToken";
+      setAuth({ user: email, accessToken });
+      setEmail("");
+      setPassword("");
+      navigate(from, { replace: true });
+    } catch (err: any) {
+      if (!err?.response) {
+        setErrorMsg("No Server Response");
+      } else if (err.response?.status === 400) {
+        setErrorMsg("Missing Username or Password");
+      } else {
+        setErrorMsg("Login Failed");
+      }
+    }
+  };
 
   return (
     <Stack spacing={2}>
-      <FormControl id="email">
+      <FormControl id="email" isRequired>
         <FormLabel>Email address</FormLabel>
-        <Input type="email" />
+        <Input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </FormControl>
-      <FormControl id="password">
+      <FormControl id="password" isRequired>
         <FormLabel>Password</FormLabel>
-        <InputGroup>
-          <Input type={showPassword ? "text" : "password"} />
-          <InputRightElement h={"full"}>
-            <Button
-              variant={"ghost"}
-              onClick={() => setShowPassword((showPassword) => !showPassword)}
-            >
-              {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
+        <Input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </FormControl>
       <Stack spacing={2}>
-        <Stack
-          // direction={{ base: "column", sm: "row" }}
-          // align={"start"}
-          justify={"space-between"}
-        >
-          <Checkbox>Remember me</Checkbox>
-          {/* <Link color={"blue.400"}>Forgot password?</Link> */}
-        </Stack>
         <Button
           bg={"blue.400"}
           color={"white"}
           _hover={{
             bg: "blue.500",
           }}
+          onClick={handleSubmit}
         >
           Sign in
         </Button>

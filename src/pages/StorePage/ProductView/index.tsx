@@ -20,16 +20,16 @@ const ProductView = ({ products, activeCategory }: IProps) => {
   return (
     <Flex
       flexWrap="wrap"
-      justifyContent="space-between"
+      justifyContent={{ base: "space-evenly" }}
       w="full"
-      p={3}
+      p={2}
       h="min-content"
       overflow="hidden"
     >
       {products.map(
         (p) =>
           isInCategory(activeCategory, p.categories) && (
-            <StoreItem name={p.name} price={p.price} />
+            <StoreItem product={p} />
           )
       )}
     </Flex>

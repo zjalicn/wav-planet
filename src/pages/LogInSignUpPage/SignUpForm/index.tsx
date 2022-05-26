@@ -11,17 +11,46 @@ import {
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const SignUpForm = (): ReactElement => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      // try to login via axios, if successful get accesstoken and roles form response.data
+      setEmail("");
+      setPassword("");
+    } catch (err: any) {
+      if (!err?.response) {
+        setErrorMsg("No Server Response");
+      } else if (err.response?.status === 400) {
+        setErrorMsg("Missing Username or Password");
+      } else {
+        setErrorMsg("Login Failed");
+      }
+    }
+  };
+
   return (
     <Stack spacing={2}>
       <FormControl id="email" isRequired>
         <FormLabel>Email address</FormLabel>
-        <Input type="email" />
+        <Input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </FormControl>
       <FormControl id="password" isRequired>
         <FormLabel>Password</FormLabel>
         <InputGroup>
-          <Input type={showPassword ? "text" : "password"} />
+          <Input
+            type={showPassword ? "text" : "password"}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <InputRightElement h={"full"}>
             <Button
               variant={"ghost"}
@@ -32,7 +61,7 @@ const SignUpForm = (): ReactElement => {
           </InputRightElement>
         </InputGroup>
       </FormControl>
-      <Stack spacing={2} pt={2}>
+      <Stack spacing={2}>
         <Button
           loadingText="Submitting"
           bg={"blue.400"}
@@ -40,6 +69,7 @@ const SignUpForm = (): ReactElement => {
           _hover={{
             bg: "blue.500",
           }}
+          onClick={handleSubmit}
         >
           Sign up
         </Button>

@@ -3,6 +3,7 @@ import {
   VStack,
   Heading,
   Text,
+  Link,
   SimpleGrid,
   GridItem,
   FormControl,
@@ -13,18 +14,22 @@ import {
   Button,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
-interface IProps {
-  secondaryTextColor: string;
-}
-
-const CheckoutDetails = ({ secondaryTextColor }: IProps): ReactElement => {
+const CheckoutDetails = (): ReactElement => {
   const colSpan = useBreakpointValue({ base: 2, md: 1 });
+
   return (
-    <VStack w="full" h="full" p={10} spacing={10} textAlign="left">
-      <VStack spacing={3} alignItems="flex-start">
+    <VStack w="full" p={10} spacing={10} textAlign="left">
+      <VStack spacing={3} alignItems="center">
         <Heading size="2xl">Your Details</Heading>
-        <Text>If you already have an account, click here to log in</Text>
+        <Text>
+          If you already have an account, click{" "}
+          <Link as={RouterLink} to="/login" color="blue.400">
+            here
+          </Link>{" "}
+          to log in
+        </Text>
       </VStack>
 
       <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
@@ -66,7 +71,17 @@ const CheckoutDetails = ({ secondaryTextColor }: IProps): ReactElement => {
           <Checkbox defaultChecked>Ship to billing address</Checkbox>
         </GridItem>
         <GridItem colSpan={2}>
-          <Button size="lg" w="full" variant="primary">
+          <Button
+            size="lg"
+            w="full"
+            variant="primary"
+            loadingText="Submitting"
+            bg={"blue.400"}
+            color={"white"}
+            _hover={{
+              bg: "blue.500",
+            }}
+          >
             Place Order
           </Button>
         </GridItem>

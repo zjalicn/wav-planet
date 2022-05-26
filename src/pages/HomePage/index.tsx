@@ -1,6 +1,16 @@
 import { ReactElement } from "react";
-import { useColorModeValue } from "@chakra-ui/react";
-import { Link, Flex } from "@chakra-ui/react";
+import {
+  Text,
+  Flex,
+  Link,
+  AspectRatio,
+  Image,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
+
+import Logo from "../../images/logo.png";
+import LogoInverted from "../../images/logo-inverted.png";
 
 const HomePage = (): ReactElement => {
   return (
@@ -9,9 +19,14 @@ const HomePage = (): ReactElement => {
       w="full"
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
+      flexDir="column"
     >
-      <Link>Shop</Link>
+      <AspectRatio w={"sm"} ratio={1}>
+        <Image src={useColorModeValue(Logo, LogoInverted)} alt="Logo" />
+      </AspectRatio>
+      <Link as={RouterLink} to="/store">
+        <Text fontSize="2xl">Continue To Store {`>`}</Text>
+      </Link>
     </Flex>
   );
 };

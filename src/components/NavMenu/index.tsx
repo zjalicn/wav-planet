@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import {
   IconButton,
   Flex,
@@ -9,16 +10,21 @@ import {
   MenuDivider,
   Center,
 } from "@chakra-ui/react";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 
-const NavMenu = () => {
-  const links = [
-    { name: "Downloads" },
-    { name: "Settings" },
-    { name: "Log Out" },
-  ];
+import { routes, defaultAuth } from "../../helpers";
+import useAuth from "../../hooks/useAuth";
 
-  const user = { email: "user@email.com" };
-  const { email } = user;
+const NavMenu = (): ReactElement => {
+  const { auth, setAuth } = useAuth();
+  const navigate = useNavigate();
+
+  const { user } = auth;
+
+  const logout = async () => {
+    setAuth(defaultAuth);
+    navigate("/store");
+  };
 
   return (
     <Menu>
@@ -31,13 +37,22 @@ const NavMenu = () => {
             <Avatar size="sm" name="" />
           </Center>
           <Center>
-            <p>{email}</p>
+            <p>{user}</p>
           </Center>
         </Flex>
         <MenuDivider />
-        {links.map((link) => (
-          <MenuItem>{link.name}</MenuItem>
+        {routes.map((link, index) => (
+          <MenuItem
+            id={"MenuItem-" + index}
+            as={RouterLink}
+            to={`${link.path}`}
+          >
+            {link.name}
+          </MenuItem>
         ))}
+        <MenuItem id={"MenuItem-Logout"} onClick={() => logout()}>
+          Log Out
+        </MenuItem>
       </MenuList>
     </Menu>
   );

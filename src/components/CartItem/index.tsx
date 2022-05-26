@@ -5,21 +5,22 @@ import {
   Stack,
   AspectRatio,
   Image,
-  Text,
 } from "@chakra-ui/react";
 import { IProduct } from "../../interfaces";
 
 interface IProps {
   product: IProduct;
-  textColor: string;
 }
 
-const CartItem = ({ product, textColor }: IProps) => {
-  const { name, price } = product;
+const CartItem = ({ product }: IProps) => {
+  const { name, price, imageSrc } = product;
   return (
     <HStack spacing={6} alignItems="center" w="full">
       <AspectRatio ratio={1} w={24}>
-        <Image src="/images/skateboard.png" alt="product image" />
+        <Image
+          src={require(`../../images/${imageSrc}.jpg`)}
+          alt="product image"
+        />
       </AspectRatio>
       <Stack
         spacing={0}
@@ -30,7 +31,6 @@ const CartItem = ({ product, textColor }: IProps) => {
       >
         <VStack w="full" spacing={0} alignItems="start">
           <Heading size="md">{name}</Heading>
-          <Text color={textColor}>PNYCOMP27541</Text>
         </VStack>
         <Heading size="sm" textAlign="end">
           ${price}
