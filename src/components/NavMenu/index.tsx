@@ -43,14 +43,14 @@ const NavMenu = (): ReactElement => {
         <MenuDivider />
         {routes.map((link, index) => (
           <MenuItem
-            id={"MenuItem-" + index}
+            key={"MenuItem-" + index}
             as={RouterLink}
             to={`${link.path}`}
           >
             {link.name}
           </MenuItem>
         ))}
-        <MenuItem id={"MenuItem-Logout"} onClick={() => logout()}>
+        <MenuItem key={"MenuItem-Logout"} onClick={() => logout()}>
           Log Out
         </MenuItem>
       </MenuList>

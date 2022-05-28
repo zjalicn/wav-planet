@@ -28,9 +28,9 @@ const ProductView = ({ products, activeCategory }: IProps) => {
       overflowY="scroll"
     >
       {products.map(
-        (p) =>
+        (p, index) =>
           isInCategory(activeCategory, p.categories) && (
-            <StoreItem product={p} />
+            <StoreItem product={p} key={`item-${index}`} />
           )
       )}
     </Flex>

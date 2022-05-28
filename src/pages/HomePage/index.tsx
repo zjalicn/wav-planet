@@ -1,19 +1,11 @@
 import { ReactElement } from "react";
-import {
-  Text,
-  Flex,
-  Link,
-  AspectRatio,
-  Image,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Text, Flex, Link, AspectRatio, Image } from "@chakra-ui/react";
 import { ScaleFade } from "@chakra-ui/react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { Link as RouterLink } from "react-router-dom";
 
 import Logo from "../../images/logo.png";
-import LogoInverted from "../../images/logo-inverted.png";
 
 const HomePage = (): ReactElement => {
   const particlesInit = async (main: any) => {

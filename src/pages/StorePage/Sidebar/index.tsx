@@ -26,8 +26,9 @@ const Sidebar = ({ category, setCategory }: IProps) => {
       px={6}
       pt={{ base: 6, sm: 0 }}
     >
-      {categories.map((c) => (
+      {categories.map((c, index) => (
         <Text
+          key={`sidebar-${index}`}
           onClick={() => setCategory(c)}
           fontWeight={c === category ? "bold" : "normal"}
           cursor="pointer"

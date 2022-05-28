@@ -47,8 +47,8 @@ const CheckoutCart = ({ products }: IProps): ReactElement => {
       <VStack alignItems="flex-start" spacing={3}>
         <Heading size="2xl">Your Cart</Heading>
       </VStack>
-      {products.map((p) => (
-        <CartItem product={p} />
+      {products.map((p, index) => (
+        <CartItem key={`cart-item-${index}`} product={p} />
       ))}
       <VStack spacing={4} alignItems="stretch" w="full">
         <HStack justifyContent="space-between">
