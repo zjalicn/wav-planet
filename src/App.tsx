@@ -11,7 +11,6 @@ import {
   SettingsPage,
   StorePage,
 } from "./pages";
-import { products } from "./helpers";
 import { Layout, RequireAuth } from "./components";
 
 export const App = (): ReactElement => {
@@ -21,20 +20,14 @@ export const App = (): ReactElement => {
 
       <Route path="/" element={<Layout />}>
         {/* Public Routes*/}
-        <Route path="store" element={<StorePage products={products} />} />
-        <Route path="checkout" element={<CheckoutPage products={products} />} />
+        <Route path="store" element={<StorePage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
         <Route path="login" element={<LogInSignUpPage />} />
-        <Route
-          path="product/:pid"
-          element={<ProductPage product={products[0]} />}
-        />
+        <Route path="product/:pid" element={<ProductPage />} />
 
         {/* Protected Routes*/}
         <Route element={<RequireAuth />}>
-          <Route
-            path="downloads"
-            element={<DownloadsPage products={products} />}
-          />
+          <Route path="downloads" element={<DownloadsPage />} />
           <Route path="settings" element={<SettingsPage />} />
         </Route>
 

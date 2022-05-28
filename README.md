@@ -3,39 +3,39 @@
 ## Roadmap
 
 ### 2.0 - Log In State + Protected Routes
-- StoreFront
-    - fixed height sidebar
-    - responsive sidebar for StorePage
-- HomePage
-    - REACT THREE FIBER - https://codepen.io/round/pen/NBoebM
+- NAV BAR (show cart amount)
+
+- Check Out Page
+  - add up the sum of all items
+  - if user is logged in, check their profile otherwise localstorage
+
 - Sign Up / Log in
     - onchange events for login/sign up form, clear on error
-    - persist on refresh
-    - recover password
+    - toast (info) on successful sign up (or fail)
+    - logi state persist on refresh
     - unauthorized for login?
     - Formik : https://formik.org/
     - handle logout
         - if used in more components, this should be in context 
         - axios to /logout endpoint 
+
 - Product Page
-    - slightly smaller pic
     - send add to cart to the bottom, space between title, desc and cart button?
     - line up title and top of pic
 
+- hover animation over products / sidebar options
+  - better animation or something for selecting the sidebar categories
+- default image so that it doesnt crash if the url doesnt add up
 
 ### 3.0 - Connect to API
 - LoginSignUpPage
     - allow for user sign up w/ encrypted password
     - log in user and create token
-- Host API to public VPC on AWS & Connect
-- User Login to DB
+- Connect User Login & Sign Up to DB
+    - 
 - PLP
-    - GET product info, price, etc
     - add to cart button functionality
     - preview audio
-- Checkout
-    - connect with stripe API and add payment processing
-    - UPDATE user - add product to account
 - Products (Download Page)
     - GET users purchased products & display purchased
     - CREATE downloads in database and allow for download
@@ -60,6 +60,13 @@
 - interfaces
     - make models folder / sync with backend? maybe a core library/dependancy
 - tests
+- Secure login, db, etc
+- Checkout
+    - connect with stripe API and add payment processing
+    - UPDATE user - add product to account
+    - on mobile take out top white space
+- recover password
+
 
 ### EVENTUALLY
 Typescript Cleanup

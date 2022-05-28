@@ -2,13 +2,9 @@ import { ReactElement } from "react";
 import { Heading, Flex, useColorModeValue } from "@chakra-ui/react";
 
 import { DownloadItem } from "../../components";
-import { IProduct } from "../../interfaces";
+import { products } from "../../helpers";
 
-interface IProps {
-  products: IProduct[];
-}
-
-const DownloadPage = ({ products }: IProps): ReactElement => {
+const DownloadPage = (): ReactElement => {
   return (
     <Flex
       minH={"100vh"}

@@ -9,14 +9,15 @@ interface IProps {
 }
 
 const StoreItem = ({ product }: IProps): ReactElement => {
-  const { id, name, price, onSale, salePrice, imageSrc } = product;
+  const { _id, name, price, onSale, salePrice, imageSrc } = product;
+
   return (
     <Flex flexDir="column" p={2}>
       <AspectRatio
         w="200px"
         ratio={3 / 4}
         as={RouterLink}
-        to={`/product/${id}`}
+        to={`/product/${_id}`}
       >
         <Image
           src={require(`../../images/${imageSrc}.jpg`)}

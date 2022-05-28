@@ -1,14 +1,11 @@
 import { ReactElement } from "react";
+import { Container, Flex } from "@chakra-ui/react";
+
 import CheckoutDetails from "./CheckoutDetails";
 import CheckoutCart from "./CheckoutCart";
-import { Container, Flex, useColorModeValue } from "@chakra-ui/react";
-import { IProduct } from "../../interfaces";
+import { products } from "../../helpers";
 
-interface IProps {
-  products: IProduct[];
-}
-
-const CheckoutPage = ({ products }: IProps): ReactElement => {
+const CheckoutPage = (): ReactElement => {
   return (
     <Container maxW="container.xl" p={0}>
       <Flex py={[0, 5, 10]} direction={{ base: "column-reverse", md: "row" }}>

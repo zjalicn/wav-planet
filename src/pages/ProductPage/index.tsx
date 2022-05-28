@@ -1,4 +1,5 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useState, useEffect } from "react";
+import axios from "axios";
 import {
   Flex,
   Text,
@@ -14,23 +15,41 @@ import {
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
-import { AudioPlayer } from "../../components";
-import { IProduct } from "../../interfaces";
 import { FaMinus, FaPlus, FaShoppingCart } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 
-interface IProps {
-  product: IProduct;
-}
+import { AudioPlayer } from "../../components";
+import { API_URL } from "../../helpers";
 
-const ProductPage = ({ product }: IProps): ReactElement => {
-  const { name, description, price, onSale, salePrice, categories } = product;
+const ProductPage = (): ReactElement => {
   const [quantity, setQuantity] = useState<number>(1);
+  const [product, setProduct] = useState({
+    name: "",
+    description: "",
+    price: 0,
+    onSale: false,
+    salePrice: 0,
+    categories: [],
+    imageSrc: "undefined",
+  });
+
+  const { pid } = useParams();
+
+  useEffect(() => {
+    axios.get(`${API_URL}/product/get/${pid}`).then((response) => {
+      console.log(response);
+      setProduct(response.data.product);
+    });
+  }, [pid]);
+
+  const { name, description, price, onSale, salePrice, categories, imageSrc } =
+    product;
 
   const ProductDetails = () => (
     <UnorderedList>
-      <ListItem>WAV Format (Works in all DAWs)</ListItem>
-      <ListItem>100% Royalty-Free</ListItem>
-      <ListItem>Instant Download via Email</ListItem>
+      <ListItem key="li-1">WAV Format (Works in all DAWs)</ListItem>
+      <ListItem key="li-2">100% Royalty-Free</ListItem>
+      <ListItem key="li-3">Instant Download via Email</ListItem>
     </UnorderedList>
   );
 
@@ -38,7 +57,7 @@ const ProductPage = ({ product }: IProps): ReactElement => {
     <Flex w="full" flexWrap="wrap">
       <Flex w="50%" p={8} justifyContent="right">
         <AspectRatio w="full" ratio={3 / 4}>
-          <Image src="https://bit.ly/naruto-sage" alt="Product" />
+          <Image src={require(`../../images/${imageSrc}.jpg`)} alt="Product" />
         </AspectRatio>
       </Flex>
       <Flex w="50%" p={12} justifyContent="left" flexDir="column">
@@ -57,7 +76,7 @@ const ProductPage = ({ product }: IProps): ReactElement => {
           )}
           <Spacer />
           {onSale && (
-            <Text fontSize="4xl" py={2}>
+            <Text fontSize="4xl" py={2} color="red.500">
               SALE
             </Text>
           )}
@@ -99,7 +118,9 @@ const ProductPage = ({ product }: IProps): ReactElement => {
 
         <Flex>
           {categories.map((c) => (
-            <Tag size="sm">{c}</Tag>
+            <Tag size="sm" key={`${c}-tag`}>
+              {c}
+            </Tag>
           ))}
         </Flex>
       </Flex>
