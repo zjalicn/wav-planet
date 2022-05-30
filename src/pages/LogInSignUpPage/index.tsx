@@ -9,12 +9,23 @@ import {
   TabList,
   TabPanels,
   TabPanel,
+  useToast,
 } from "@chakra-ui/react";
 
 import LogInForm from "./LogInForm";
 import SignUpForm from "./SignUpForm";
 
 const LogInSignUpPage = (): ReactElement => {
+  const toast = useToast({
+    position: "top-right",
+    duration: 4000,
+    isClosable: true,
+    variant: "subtle",
+    containerStyle: {
+      width: "400px",
+    },
+  });
+
   return (
     <Flex
       minH={"100vh"}
@@ -38,10 +49,10 @@ const LogInSignUpPage = (): ReactElement => {
 
             <TabPanels>
               <TabPanel>
-                <LogInForm />
+                <LogInForm toast={toast} />
               </TabPanel>
               <TabPanel>
-                <SignUpForm />
+                <SignUpForm toast={toast} />
               </TabPanel>
             </TabPanels>
           </Tabs>

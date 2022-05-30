@@ -10,7 +10,11 @@ import {
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
-const SignUpForm = (): ReactElement => {
+interface IProps {
+  toast: Function;
+}
+
+const SignUpForm = ({ toast }: IProps): ReactElement => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -18,19 +22,23 @@ const SignUpForm = (): ReactElement => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    try {
-      // try to login via axios, if successful get accesstoken and roles form response.data
-      setEmail("");
-      setPassword("");
-    } catch (err: any) {
-      if (!err?.response) {
-        setErrorMsg("No Server Response");
-      } else if (err.response?.status === 400) {
-        setErrorMsg("Missing Username or Password");
-      } else {
-        setErrorMsg("Login Failed");
-      }
-    }
+    toast({
+      title: "Sign Up Failed",
+      status: "error",
+    });
+    // try {
+    //   // try to login via axios, if successful get accesstoken and roles form response.data
+    //   setEmail("");
+    //   setPassword("");
+    // } catch (err: any) {
+    //   if (!err?.response) {
+    //     setErrorMsg("No Server Response");
+    //   } else if (err.response?.status === 400) {
+    //     setErrorMsg("Missing Username or Password");
+    //   } else {
+    //     setErrorMsg("Login Failed");
+    //   }
+    // }
   };
 
   return (

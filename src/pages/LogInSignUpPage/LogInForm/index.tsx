@@ -4,7 +4,11 @@ import { FormControl, FormLabel, Input, Stack, Button } from "@chakra-ui/react";
 
 import useAuth from "../../../hooks/useAuth";
 
-const LogInForm = (): ReactElement => {
+interface IProps {
+  toast: Function;
+}
+
+const LogInForm = ({ toast }: IProps): ReactElement => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const location: any = useLocation();
@@ -16,24 +20,31 @@ const LogInForm = (): ReactElement => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-
-    try {
-      // try to login via axios, if successful get accesstoken and roles form response.data
-      // encrypt password
-      const accessToken = "accessToken";
-      setAuth({ user: email, accessToken });
-      setEmail("");
-      setPassword("");
-      navigate(from, { replace: true });
-    } catch (err: any) {
-      if (!err?.response) {
-        setErrorMsg("No Server Response");
-      } else if (err.response?.status === 400) {
-        setErrorMsg("Missing Username or Password");
-      } else {
-        setErrorMsg("Login Failed");
-      }
-    }
+    toast({
+      position: "top-right",
+      title: "Log In Successful",
+      status: "success",
+      containerStyle: {
+        width: "400px",
+      },
+    });
+    // try {
+    //   // try to login via axios, if successful get accesstoken and roles form response.data
+    //   // encrypt password
+    //   const accessToken = "accessToken";
+    //   setAuth({ user: email, accessToken });
+    //   setEmail("");
+    //   setPassword("");
+    //   navigate(from, { replace: true });
+    // } catch (err: any) {
+    //   if (!err?.response) {
+    //     setErrorMsg("No Server Response");
+    //   } else if (err.response?.status === 400) {
+    //     setErrorMsg("Missing Username or Password");
+    //   } else {
+    //     setErrorMsg("Login Failed");
+    //   }
+    // }
   };
 
   return (
@@ -63,7 +74,7 @@ const LogInForm = (): ReactElement => {
           }}
           onClick={handleSubmit}
         >
-          Sign in
+          Log in
         </Button>
       </Stack>
     </Stack>
