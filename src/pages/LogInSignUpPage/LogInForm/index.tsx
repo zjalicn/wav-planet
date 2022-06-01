@@ -21,12 +21,8 @@ const LogInForm = ({ toast }: IProps): ReactElement => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     toast({
-      position: "top-right",
       title: "Log In Successful",
       status: "success",
-      containerStyle: {
-        width: "400px",
-      },
     });
     // try {
     //   // try to login via axios, if successful get accesstoken and roles form response.data

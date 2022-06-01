@@ -14,6 +14,7 @@ import {
   IconButton,
   UnorderedList,
   ListItem,
+  useToast,
 } from "@chakra-ui/react";
 import { FaMinus, FaPlus, FaShoppingCart } from "react-icons/fa";
 import { useParams } from "react-router-dom";
@@ -45,6 +46,20 @@ const ProductPage = (): ReactElement => {
   const { name, description, price, onSale, salePrice, categories, imageSrc } =
     product;
 
+  const toast = useToast({
+    position: "top-right",
+    duration: 4000,
+    isClosable: true,
+    variant: "subtle",
+    containerStyle: {
+      width: "400px",
+    },
+  });
+
+  const handleAddToCart = () => {
+    toast({ title: `${name} added to Cart.`, status: "success" });
+  };
+
   const ProductDetails = () => (
     <UnorderedList>
       <ListItem key="li-1">WAV Format (Works in all DAWs)</ListItem>
@@ -54,13 +69,18 @@ const ProductPage = (): ReactElement => {
   );
 
   return (
-    <Flex w="full" flexWrap="wrap">
-      <Flex w="50%" p={8} justifyContent="right">
+    <Flex w="full" flexWrap="wrap" direction={{ base: "column", md: "row" }}>
+      <Flex w={{ base: "100%", md: "50%" }} p={8} justifyContent="right">
         <AspectRatio w="full" ratio={3 / 4}>
           <Image src={require(`../../images/${imageSrc}.jpg`)} alt="Product" />
         </AspectRatio>
       </Flex>
-      <Flex w="50%" p={12} justifyContent="left" flexDir="column">
+      <Flex
+        w={{ base: "100%", md: "50%" }}
+        p={8}
+        justifyContent="left"
+        flexDir="column"
+      >
         <Flex>
           <Heading size="2xl">{name}</Heading>
         </Flex>
@@ -84,7 +104,7 @@ const ProductPage = (): ReactElement => {
 
         <Divider />
 
-        <Flex p={2}>
+        <Flex p={2} h="100%">
           <ProductDetails />
         </Flex>
 
@@ -111,7 +131,12 @@ const ProductPage = (): ReactElement => {
             />
           </ButtonGroup>
 
-          <Button leftIcon={<FaShoppingCart />} colorScheme="blue" my={2}>
+          <Button
+            onClick={handleAddToCart}
+            leftIcon={<FaShoppingCart />}
+            colorScheme="blue"
+            my={2}
+          >
             Add to Cart
           </Button>
         </Flex>
