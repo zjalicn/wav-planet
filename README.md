@@ -1,9 +1,21 @@
 # Wav Planet Store
 -- 
+## Documentation
+### Features
+
+- Store Front
+  - 
+
+- Log In / Sign Up Page
+  - log in/sign up success/fail toasts
+  - 
+
 ## Roadmap
 
 ### 2.0 - Log In State + Protected Routes
 - NAV BAR (show cart amount)
+-store front
+  - if objects aren't loaded from api don't stay on spinner forever
 
 - Check Out Page
   - add up the sum of all items
