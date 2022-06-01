@@ -108,9 +108,9 @@ const ProductPage = (): ReactElement => {
           <ProductDetails />
         </Flex>
 
-        <Flex pb={2}>
+        {/* <Flex pb={2}>
           <AudioPlayer />
-        </Flex>
+        </Flex> */}
 
         <Flex flexDir="column">
           <ButtonGroup size="sm" variant="outline">
