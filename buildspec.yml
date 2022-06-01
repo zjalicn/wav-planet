@@ -25,5 +25,3 @@ artifacts:
     - '**/*'
   base-directory: 'build'
   name: wav-planet-$(date +%Y-%m-%d)
-
-
