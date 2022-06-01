@@ -19,7 +19,7 @@ import {
 import { FaMinus, FaPlus, FaShoppingCart } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 
-import { AudioPlayer } from "../../components";
+// import { AudioPlayer } from "../../components";
 import { API_URL } from "../../helpers";
 
 const ProductPage = (): ReactElement => {
